@@ -1,7 +1,8 @@
 FROM php:7.3-rc-fpm
 
-COPY php.ini /usr/local/etc/php/
 RUN apt-get update && apt-get install -y libmcrypt-dev libpq-dev libcurl4-gnutls-dev git zip unzip
 RUN docker-php-ext-install pdo_pgsql
 
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+
+USER www-data

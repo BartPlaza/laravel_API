@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web-service:
-    #container_name: web-english
+    container_name: web-laravel_API
     build:
       context: ./
       dockerfile: web.docker
@@ -12,10 +12,13 @@ services:
       - "8000:80"
     depends_on:
       - app-service
+    networks:
+      laravel_API-network:
+        ipv4_address: 172.30.1.1
 
 
   app-service:
-    #container_name: app-english
+    container_name: app-laravel_API
     build:
       context: ./
       dockerfile: app.docker
@@ -23,14 +26,35 @@ services:
       - ./src/:/var/www
     depends_on:
       - db-service
-
+    networks:
+      laravel_API-network:
+        ipv4_address: 172.30.1.2
 
   db-service:
+    env_file:
+      - ./src/.env
+    container_name: db-laravel_API
     image: postgres:latest
-    #container_name: db-english
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      laravel_API-network:
+        ipv4_address: 172.30.1.3
 
   adminer-service:
+    container_name: adminer-laravel_API
     image: adminer
-    #container_name: adminer-english
     ports:
-     - "8080:8080"
+      - "8080:8080"
+    networks:
+      laravel_API-network:
+        ipv4_address: 172.30.1.4
+
+networks:
+  laravel_API-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16

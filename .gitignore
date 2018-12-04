@@ -1,1 +1,17 @@
 .idea/
+
+src/node_modules
+src/public/hot
+src/public/storage
+src/storage/*.key
+src/vendor
+src/.vscode
+src/nbproject
+src/.vagrant
+src/Homestead.json
+src/Homestead.yaml
+src/npm-debug.log
+src/yarn-error.log
+src/.env
+src/.phpunit.result.cache
+src/.bash_history
