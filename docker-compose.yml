@@ -26,6 +26,7 @@ services:
       - ./src/:/var/www
     depends_on:
       - db-service
+    working_dir: /var/www
     networks:
       laravel_API-network:
         ipv4_address: 172.30.1.2
