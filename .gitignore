@@ -15,3 +15,4 @@ src/yarn-error.log
 src/.env
 src/.phpunit.result.cache
 src/.bash_history
+src/_idea_helper.php
