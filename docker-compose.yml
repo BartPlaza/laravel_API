@@ -19,7 +19,7 @@ services:
 
   app-service:
     container_name: app-laravel_API
-    user: "${USER_UID}:${GROUP}"
+    #user: "${USER_UID}:${GROUP}"
     build:
       context: ./
       dockerfile: app.docker
@@ -32,6 +32,7 @@ services:
       laravel_API-network:
         ipv4_address: 172.30.1.2
 
+
   db-service:
     env_file:
       - ./src/.env
@@ -39,11 +40,10 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
     networks:
       laravel_API-network:
         ipv4_address: 172.30.1.3
+
 
   adminer-service:
     container_name: adminer-laravel_API
@@ -53,6 +53,7 @@ services:
     networks:
       laravel_API-network:
         ipv4_address: 172.30.1.4
+
 
 networks:
   laravel_API-network:

@@ -1,5 +1,8 @@
 .idea/
 
+src/.env
+src/.env.testing
+
 src/node_modules
 src/public/hot
 src/public/storage
@@ -12,7 +15,6 @@ src/Homestead.json
 src/Homestead.yaml
 src/npm-debug.log
 src/yarn-error.log
-src/.env
 src/.phpunit.result.cache
 src/.bash_history
 src/_idea_helper.php

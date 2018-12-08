@@ -1,8 +1,21 @@
-FROM php:7.3-rc-fpm
+FROM php:7.2-fpm
 
-RUN apt-get update && apt-get install -y libmcrypt-dev libpq-dev libcurl4-gnutls-dev git zip unzip
-RUN docker-php-ext-install pdo_pgsql
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "libmcrypt-dev"]
+RUN ["apt-get", "install", "-y", "libpq-dev"]
+RUN ["apt-get", "install", "-y", "libcurl4-gnutls-dev"]
+RUN ["apt-get", "install", "-y", "git"]
+RUN ["apt-get", "install", "-y", "unzip"]
+
+RUN ["docker-php-ext-install", "pdo_pgsql"]
 
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
-USER www-data
+# Add default user or user pass in build script
+ARG UNAME=docker
+ARG UID=1000
+RUN useradd -m -u $UID -g www-data -o -s /bin/bash $UNAME
+
+USER $UNAME
+
+
