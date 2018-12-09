@@ -17,4 +17,5 @@ src/npm-debug.log
 src/yarn-error.log
 src/.phpunit.result.cache
 src/.bash_history
-src/_idea_helper.php
+src/_ide_helper.php
+src/.phpstorm.meta.php
