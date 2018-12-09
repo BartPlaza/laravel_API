@@ -19,7 +19,6 @@ services:
 
   app-service:
     container_name: app-laravel_API
-    #user: "${USER_UID}:${GROUP}"
     build:
       context: ./
       dockerfile: app.docker
