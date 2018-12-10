@@ -43,7 +43,7 @@ class LogoutControllerTest extends TestCase
     public function testShouldReturnStatus400WhenNoTokenInLogoutRequest()
     {
         //when
-        $response = $this->json('Post','/api/auth/logout');
+        $response = $this->json('Post', '/api/auth/logout');
 
         //then
         $response->assertStatus(400);
