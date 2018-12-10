@@ -10,7 +10,7 @@ class MeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api']);
+        $this->middleware(['api.auth:api']);
     }
 
     /** @return \Illuminate\Http\JsonResponse */
